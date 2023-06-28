@@ -1,1 +1,36 @@
-<p>cadastro works!</p>
+<h4 class="text-center">Cadastro</h4>
+
+<form class="form mt-4" #form="ngForm" [formGroup]="cadastroForm" (submit)="cadastrarUsuario()">
+
+  <div class="form-group">
+    <input
+      type="text"
+      formControlName="userName"
+      class="form-control"
+      placeholder="Nome"
+      [ngClass]="{ 'is-invalid': f['userName'].errors}"
+      autofocus>
+    <!-- <small *ngIf="cadastroForm.get('userName').errors?['required'] && (form.submitted || cadastroForm.get('userName')?.touched')" class="text-danger d-block mt-2">Informe nome do usuário</small>  -->
+    <small *ngIf="f['userName'].errors" class="text-danger d-block mt-2">Informe nome do usuário</small>
+    <!-- <small *ngIf="cadastroForm.get('userName').errors?['minlength'] && (form.submitted || cadastroForm.get('userName')?.touched)" class="text-danger d-block mt-2">Digite no mínimo 2 caracteres</small>
+    <small *ngIf="cadastroForm.get('userName').errors?['maxlength'] && (form.submitted || cadastroForm.get('userName')?.touched)" class="text-danger d-block mt-2">Digite no máximo 10 caracteres</small>  -->
+  </div>
+
+  <div class="form-group">
+        <input type="text" formControlName="email" class="form-control" placeholder="Email">
+        <!-- <small *ngIf="cadastroForm.get('email').errors?['required'] && (form.submitted || cadastroForm.get('email')?.touched)" class="text-danger d-block mt-2">Informe o email</small>
+        <small *ngIf="cadastroForm.get('email').errors?.email && (form.submitted || cadastroForm.get('email')?.touched)" class="text-danger d-block mt-2">Email inválido!</small> -->
+      </div>
+
+  <div class="form-group">
+    <input type="password" formControlName="password" class="form-control" placeholder="password">
+    <!-- <small *ngIf="cadastroForm.get('password').errors?.['required'] && (form.submitted || cadastroForm.get('password')?.touched)" class="text-danger d-block mt-2">Informe a senha</small>  -->
+    <!-- <small *ngIf="cadastroForm.get('password').errors?.['minlength'] && (form.submitted || cadastroForm.get('password')?.touched)" class="text-danger d-block mt-2">A senha deve ter no mínimo 4 caracteres</small>
+    <small *ngIf="cadastroForm.get('password').errors?.['maxlength'] && (form.submitted || cadastroForm.get('password')?.touched)" class="text-danger d-block mt-2">A senha deve ter no máximo 8 caracteres</small>  -->
+  </div>
+
+  <button class="btn btn-primary btn-block" [disabled]="cadastroForm.invalid">Cadastrar</button>
+
+</form>
+
+<p class="mt-3 text-right">voltar para <a [routerLink] = "['']">Login</a></p>
